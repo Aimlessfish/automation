@@ -1,0 +1,5 @@
+{{ range .}}
+#!/bin/sh
+cd "$(dirname "$(readlink -fn "$0")")"
+java -Xms{{.XMS}}G -Xmx{{.XMX}}G -jar {{ .Jar }} {{ .Option }}
+{{ end }}

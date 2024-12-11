@@ -1,0 +1,16 @@
+{{ range . }}
+[Unit]
+Description=Minecraft Server for {{USERID}}.{{USERSERVERID}}
+After=network.target
+
+[Service]
+Type=simple
+User={{USERID}}
+WorkingDirectory=/home/servers/{{USERID}}/{{USERSERVERID}}
+ExecStart=/home/servers/{{USERID}}/{{USERSERVERID}}/start.sh
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+{{ end }}
